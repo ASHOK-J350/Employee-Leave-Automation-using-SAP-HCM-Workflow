@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definition for Leave Request'
+define service ZCIT_SD_LVH_22EC301 {
+  expose ZCIT_C_LVH_22EC301 as LeaveHeader;
+  expose ZCIT_C_LVI_22EC301 as LeaveItem;
+}

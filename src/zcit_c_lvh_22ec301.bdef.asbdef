@@ -1,0 +1,20 @@
+projection;
+strict ( 2 );
+
+define behavior for ZCIT_C_LVH_22EC301 alias LeaveHeader
+{
+  use create;
+  use update;
+  use delete;
+
+  // THIS IS THE CRITICAL LINE TO FIX THE UI ERROR
+  use association _LeaveItems { create; }
+}
+
+define behavior for ZCIT_C_LVI_22EC301 alias LeaveItem
+{
+  use update;
+  use delete;
+
+  use association _LeaveHeader;
+}

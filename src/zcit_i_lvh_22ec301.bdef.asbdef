@@ -1,0 +1,28 @@
+unmanaged implementation in class zcit_bp_lvh_22ec301 unique;
+strict ( 2 );
+
+define behavior for ZCIT_I_LVH_22EC301 alias LeaveHeader
+lock master
+authorization master ( instance )
+{
+  create;
+  update;
+  delete;
+
+  association _LeaveItems { create; }
+
+  field ( readonly ) ReqId;
+}
+
+define behavior for ZCIT_I_LVI_22EC301 alias LeaveItem
+lock dependent by _LeaveHeader
+authorization dependent by _LeaveHeader
+{
+  update;
+  delete;
+
+  association _LeaveHeader;
+
+  field ( readonly ) ItemId;
+  field ( readonly ) ReqId;
+}
